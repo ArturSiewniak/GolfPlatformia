@@ -3,17 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Camera/CameraComponent.h"
-#include "GameFramework/Pawn.h"
-#include "GameFramework/SpringArmComponent.h"
+#include "GameFramework/Character.h"
 #include "Dude.generated.h"
+
 UCLASS()
-class GOLFPLATFORMIA_API ADude : public APawn
+class GOLFPLATFORMIA_API ADude : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
+	// Sets default values for this character's properties
 	ADude();
 
 protected:
@@ -27,23 +26,4 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-private:
-	//Input variables
-	FVector CurrentVelocity;
-	FVector CameraInput;
-	UPROPERTY(EditAnywhere)
-	float MaxSpeed = 500.f;
-
-	//Input functions
-	void MoveForward(float AxisValue);
-	void Strafe(float AxisValue);
-	void CameraYaw(float AxisValue);
-	void CameraPitch(float AxisValue);
-
-	UPROPERTY(EditAnywhere)
-	USceneComponent* VisibleComponent;
-	UPROPERTY(EditAnywhere)
-	UCameraComponent* Camera;
-	UPROPERTY(EditAnywhere)
-	USpringArmComponent* SpringArmComponent;
 };
