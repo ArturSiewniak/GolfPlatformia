@@ -4,6 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+
+#include "Camera/CameraComponent.h"
+//#include "Components/InputComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
+//#include "GameFramework/Controller.h"
+#include "GameFramework/SpringArmComponent.h"
+
 #include "Dude.generated.h"
 
 UCLASS()
@@ -14,6 +21,15 @@ class GOLFPLATFORMIA_API ADude : public ACharacter
 public:
 	// Sets default values for this character's properties
 	ADude();
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	USpringArmComponent* CameraSpringArm;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UCameraComponent* FollowCamera;
+
+	void MoveForward(float Axis);
+	void Strafe(float Axis);
 
 protected:
 	// Called when the game starts or when spawned
